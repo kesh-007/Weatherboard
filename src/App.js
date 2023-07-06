@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import SideBar from './Components/SideBar';
+import DashBoard from './Components/DashBoard';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 function App() {
+  useEffect(()=>{
+    toast(
+      "This webpage is created by Keshav",
+      {
+        duration: 3000,
+      }
+    );
+    
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='relative flex' style={{fontFamily:'poppins'}}>
+      <Toaster/>
+      <SideBar className='h-screen'/>
+      <div className='absolute left-[14rem] top-0' style={{ width: 'calc(100% - 14rem)' }}>
+        <DashBoard />
+      </div>
     </div>
   );
 }
